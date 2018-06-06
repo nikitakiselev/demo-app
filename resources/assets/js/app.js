@@ -20,3 +20,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+require('jquery-slimscroll');
+require('fastclick');
+require('admin-lte');
+require('admin-lte/dist/js/demo');
