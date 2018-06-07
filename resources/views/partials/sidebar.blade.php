@@ -46,11 +46,11 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="../widgets.html" class="nav-link">
-                        <i class="nav-icon fa fa-th"></i>
+                    <a href="{{ route('booking.index') }}" class="nav-link">
+                        <i class="nav-icon fa fa-shopping-cart"></i>
                         <p>
-                            Widgets
-                            <span class="right badge badge-danger">New</span>
+                            Bookings
+                            <span class="right badge badge-success">27</span>
                         </p>
                     </a>
                 </li>
