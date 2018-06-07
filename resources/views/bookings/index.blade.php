@@ -7,6 +7,7 @@
         const $bookingsTable = $('#bookings-table').dataTable({
             serverSide: true,
             ajax: '',
+            fixedHeader: true,
             columns: [
                 { data: 'id' },
                 { data: 'quest_id' },

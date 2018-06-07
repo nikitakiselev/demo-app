@@ -26,3 +26,4 @@ require('admin-lte/build/js/AdminLTE.js');
 
 require('datatables.net-bs4');
 require('datatables.net-responsive-bs4');
+require('datatables.net-fixedheader');
