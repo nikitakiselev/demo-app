@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class BookingsController extends Controller
 {
@@ -17,6 +18,10 @@ class BookingsController extends Controller
     public function index(Booking $booking)
     {
         $bookings = $booking::all();
+
+        if (request()->ajax()) {
+            return DataTables::eloquent($booking->query())->toArray();
+        }
 
         return view('bookings.index', compact('bookings'));
     }
