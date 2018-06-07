@@ -23,5 +23,4 @@ const app = new Vue({
 
 require('jquery-slimscroll');
 require('fastclick');
-require('admin-lte');
-require('admin-lte/dist/js/demo');
+require('admin-lte/build/js/AdminLTE.js');
