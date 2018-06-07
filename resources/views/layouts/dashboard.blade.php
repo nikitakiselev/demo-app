@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
 <!-- Site wrapper -->
 <div id="app" class="wrapper">
     @include('partials.navbar')
