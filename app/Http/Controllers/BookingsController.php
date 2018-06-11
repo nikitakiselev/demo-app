@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use timgws\QueryBuilderParser;
 use Yajra\DataTables\Facades\DataTables;
 
 class BookingsController extends Controller
@@ -12,15 +14,33 @@ class BookingsController extends Controller
      * Display a listing of the resource.
      *
      * @param \App\Models\Booking $booking
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Booking $booking)
+    public function index(Booking $booking, Request $request)
     {
         $bookings = $booking::all();
 
         if (request()->ajax()) {
-            return DataTables::eloquent($booking->query())->toArray();
+            $rules = $request->input('rules');
+
+            $query = DB::table('bookings');
+
+            if (json_decode($rules)) {
+                $qbp = new QueryBuilderParser([
+                    'first_name',
+                    'last_name',
+                    'status',
+                    'phone',
+                ]);
+
+                $builder = DB::table('bookings');
+
+                $query = $qbp->parse($rules, $builder);
+            }
+
+            return DataTables::query($query)->toArray();
         }
 
         return view('bookings.index', compact('bookings'));
