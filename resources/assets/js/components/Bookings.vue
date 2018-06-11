@@ -30,6 +30,8 @@
     require('datatables.net-bs4');
     require('datatables.net-responsive-bs4');
     require('datatables.net-fixedheader');
+    require('datatables.net-buttons-bs4');
+    require('./../../../../vendor/yajra/laravel-datatables-buttons/src/resources/assets/buttons.server-side.js');
 
     export default {
         components: {
@@ -44,6 +46,12 @@
                     serverSide: true,
                     ajax: '',
                     fixedHeader: true,
+                    dom: "<'row'<'col-sm-12 col-md-6'B><'col-sm-12 col-md-6'f>>" +
+                        "<'row'<'col-sm-12'tr>>" +
+                        "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                    buttons: [
+                        'export'
+                    ],
                     columns: [
                         { data: 'id' },
                         { data: 'quest' },
