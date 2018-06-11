@@ -36,7 +36,9 @@
             applyFilter() {
                 let rules = this.builder.queryBuilder('getRules');
 
-                this.$emit('apply', rules);
+                if (rules) {
+                    this.$emit('apply', rules);
+                }
             },
 
             resetFilter() {
