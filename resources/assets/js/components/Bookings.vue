@@ -46,7 +46,7 @@
                     fixedHeader: true,
                     columns: [
                         { data: 'id' },
-                        { data: 'quest_id' },
+                        { data: 'quest' },
                         { data: 'first_name' },
                         { data: 'last_name' },
                         { data: 'phone' },

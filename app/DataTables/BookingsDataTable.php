@@ -2,7 +2,9 @@
 
 namespace App\DataTables;
 
+use App\Models\Booking;
 use App\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use timgws\QueryBuilderParser;
 use Yajra\DataTables\Services\DataTable;
@@ -22,6 +24,9 @@ class BookingsDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
+            ->addColumn('quest', function ($item) {
+                return $item->quest->title;
+            })
             ->addColumn('actions', 'bookings.actions')
             ->rawColumns(['actions']);
     }
@@ -39,12 +44,12 @@ class BookingsDataTable extends DataTable
         if (json_decode($rules)) {
             $qbp = new QueryBuilderParser($this->getFilterableColumns());
 
-            $builder = DB::table('bookings')->select($this->getColumns());
-
-            $query = $qbp->parse($rules, $builder);
+            $query = $qbp->parse($rules, $query);
         }
 
-        return $query;
+        return (new Builder($query))
+            ->setModel(new Booking())
+            ->with(['quest']);
     }
 
     protected function getFilterableColumns()
