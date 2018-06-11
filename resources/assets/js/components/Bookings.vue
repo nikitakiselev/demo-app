@@ -63,16 +63,20 @@
 
         methods: {
             applyFilters(filters) {
-                console.log(filters);
-                $('#bookings-table').dataTable($.extend({}, this.settings, {
-                    ajax: {
-                        url: '',
-                        type: 'GET',
-                        data: {
-                            rules: JSON.stringify(filters)
+                if (filters) {
+                    $('#bookings-table').dataTable($.extend({}, this.settings, {
+                        destroy: Boolean(filters),
+                        ajax: {
+                            url: '',
+                            type: 'GET',
+                            data: {
+                                rules: JSON.stringify(filters)
+                            }
                         }
-                    }
-                }));
+                    }))
+                }
+
+                $('#bookings-table').DataTable().fixedHeader.adjust();
             }
         },
 

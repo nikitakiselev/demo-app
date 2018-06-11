@@ -48,9 +48,13 @@
         },
 
         mounted() {
+            let vue = this;
             this.builder = $('#builder').queryBuilder({
                 filters: this.filters
             })
+                .on('afterAddRule.queryBuilder afterAddGroup.queryBuilder afterDeleteGroup.queryBuilder afterDeleteRule.queryBuilder', function () {
+                    vue.$emit('apply', null);
+                })
                 .removeClass('form-inline');
         }
     };
