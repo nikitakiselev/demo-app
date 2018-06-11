@@ -37,6 +37,7 @@
 
         data() {
             return {
+                tableSelector: '#bookings-table',
                 settings: {
                     destroy: true,
                     serverSide: true,
@@ -64,7 +65,7 @@
         methods: {
             applyFilters(filters) {
                 if (filters) {
-                    $('#bookings-table').dataTable($.extend({}, this.settings, {
+                    $(this.tableSelector).dataTable($.extend({}, this.settings, {
                         destroy: Boolean(filters),
                         ajax: {
                             url: '',
@@ -76,12 +77,12 @@
                     }))
                 }
 
-                $('#bookings-table').DataTable().fixedHeader.adjust();
+                $(this.tableSelector).DataTable().fixedHeader.adjust();
             }
         },
 
         mounted() {
-            $('#bookings-table').dataTable(this.settings);
+            $(this.tableSelector).dataTable(this.settings);
         }
     };
 </script>
