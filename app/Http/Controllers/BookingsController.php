@@ -2,28 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\BookingsDataTable;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use timgws\QueryBuilderParser;
 use Yajra\DataTables\Facades\DataTables;
 
+/**
+ * Class BookingsController
+ * @package App\Http\Controllers
+ */
 class BookingsController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @param \App\DataTables\BookingsDataTable $dataTable
      *
-     * @param \App\Models\Booking $booking
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return mixed
      */
-    public function index(Booking $booking)
+    public function index(BookingsDataTable $dataTable)
     {
-        $bookings = $booking::all();
-
-        if (request()->ajax()) {
-            return DataTables::eloquent($booking->query())->toArray();
-        }
-
-        return view('bookings.index', compact('bookings'));
+        return $dataTable->render('bookings.index');
     }
 
     /**

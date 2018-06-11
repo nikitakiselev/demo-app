@@ -15,6 +15,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('bookings', require('./components/Bookings.vue'));
 
 const app = new Vue({
     el: '#app'
@@ -23,7 +24,3 @@ const app = new Vue({
 require('jquery-slimscroll');
 require('fastclick');
 require('admin-lte/build/js/AdminLTE.js');
-
-require('datatables.net-bs4');
-require('datatables.net-responsive-bs4');
-require('datatables.net-fixedheader');
