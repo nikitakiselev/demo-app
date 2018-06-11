@@ -16,6 +16,7 @@
                     <th>Status</th>
                     <th>Date</th>
                     <th>Price</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -56,7 +57,8 @@
                                 return moment(data).format('YYYY-MM-DD')
                             }
                         },
-                        { data: 'price' }
+                        { data: 'price' },
+                        { data: 'actions', sortable: false }
                     ]
                 }
             }

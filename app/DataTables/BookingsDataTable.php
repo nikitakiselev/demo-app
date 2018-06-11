@@ -21,7 +21,9 @@ class BookingsDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        return datatables($query);
+        return datatables($query)
+            ->addColumn('actions', 'bookings.actions')
+            ->rawColumns(['actions']);
     }
 
     /**
