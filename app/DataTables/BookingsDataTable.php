@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Models\Booking;
-use App\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use timgws\QueryBuilderParser;
@@ -15,6 +14,21 @@ use Yajra\DataTables\Services\DataTable;
  */
 class BookingsDataTable extends DataTable
 {
+    /**
+     * List of columns to be exported.
+     *
+     * @var array
+     */
+    protected $exportColumns = [
+        'quest',
+        'data',
+        'first_name',
+        'last_name',
+        'phone',
+        'email',
+        'status',
+    ];
+
     /**
      * Build DataTable class.
      *
