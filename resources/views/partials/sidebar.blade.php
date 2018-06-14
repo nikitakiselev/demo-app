@@ -50,7 +50,9 @@
                         <i class="nav-icon fa fa-shopping-cart"></i>
                         <p>
                             Bookings
-                            <span class="right badge badge-success">27</span>
+                            <span class="right badge badge-success" title="New bookings count">
+                                {{ $newBookingsCount }}
+                            </span>
                         </p>
                     </a>
                 </li>
