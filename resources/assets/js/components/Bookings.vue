@@ -1,7 +1,9 @@
 <template>
     <div class="bookings">
-        <div class="form-group">
-            <filters @apply="applyFilters"></filters>
+        <div class="container-fluid">
+            <div class="form-group">
+                <filters @apply="applyFilters"></filters>
+            </div>
         </div>
 
         <table id="bookings-table" class="table">
