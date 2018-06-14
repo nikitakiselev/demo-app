@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Quest;
 use Illuminate\Http\Request;
 
+/**
+ * Class QuestController
+ * @package App\Http\Controllers
+ */
 class QuestController extends Controller
 {
     /**

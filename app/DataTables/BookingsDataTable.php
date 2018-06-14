@@ -6,6 +6,7 @@ use App\Models\Booking;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use timgws\QueryBuilderParser;
+use Yajra\DataTables\DataTableAbstract;
 use Yajra\DataTables\Services\DataTable;
 
 /**
@@ -33,9 +34,10 @@ class BookingsDataTable extends DataTable
      * Build DataTable class.
      *
      * @param mixed $query Results from query() method.
+     *
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function dataTable($query)
+    public function dataTable($query): DataTableAbstract
     {
         return datatables($query)
             ->addColumn('quest', function ($item) {
@@ -49,7 +51,7 @@ class BookingsDataTable extends DataTable
      * @return \Illuminate\Database\Query\Builder
      * @throws \timgws\QBParseException
      */
-    public function query()
+    public function query(): \Illuminate\Database\Query\Builder
     {
         $rules = $this->request()->input('rules');
 
@@ -66,7 +68,10 @@ class BookingsDataTable extends DataTable
             ->with(['quest']);
     }
 
-    protected function getFilterableColumns()
+    /**
+     * @return array
+     */
+    protected function getFilterableColumns(): array
     {
         return [
             'first_name',
@@ -82,7 +87,7 @@ class BookingsDataTable extends DataTable
      *
      * @return array
      */
-    protected function getColumns()
+    protected function getColumns(): array
     {
         return [
             'id',
@@ -103,7 +108,7 @@ class BookingsDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
+    protected function filename(): string
     {
         return 'Bookings_' . date('YmdHis');
     }

@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\DataTables\BookingsDataTable;
 use App\Models\Booking;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use timgws\QueryBuilderParser;
-use Yajra\DataTables\Facades\DataTables;
 
 /**
  * Class BookingsController
@@ -18,7 +15,7 @@ class BookingsController extends Controller
     /**
      * @param \App\DataTables\BookingsDataTable $dataTable
      *
-     * @return mixed
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     public function index(BookingsDataTable $dataTable)
     {
@@ -38,7 +35,8 @@ class BookingsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -61,7 +59,7 @@ class BookingsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Booking  $order
+     * @param  \App\Models\Booking $order
      *
      * @return \Illuminate\Http\Response
      */
@@ -73,8 +71,8 @@ class BookingsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Booking  $order
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Booking $order
      *
      * @return \Illuminate\Http\Response
      */
@@ -86,7 +84,7 @@ class BookingsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Booking  $order
+     * @param  \App\Models\Booking $order
      *
      * @return \Illuminate\Http\Response
      */

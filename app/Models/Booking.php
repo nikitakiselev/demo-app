@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Class Booking
  * @package App\Models
- *
  * @property string $first_name
  * @property string $last_name
  * @property string $phone
