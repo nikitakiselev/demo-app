@@ -48,10 +48,10 @@ class BookingsDataTable extends DataTable
     }
 
     /**
-     * @return \Illuminate\Database\Query\Builder
+     * @return \Illuminate\Database\Eloquent\Builder
      * @throws \timgws\QBParseException
      */
-    public function query(): \Illuminate\Database\Query\Builder
+    public function query(): Builder
     {
         $rules = $this->request()->input('rules');
 
