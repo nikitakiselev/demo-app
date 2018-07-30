@@ -112,4 +112,25 @@ class BookingsDataTable extends DataTable
     {
         return 'Bookings_' . date('YmdHis');
     }
+
+    /**
+     * PDF version of the table using print preview blade template.
+     *
+     * @return mixed
+     */
+    public function snappyPdf()
+    {
+        /** @var \Barryvdh\Snappy\PdfWrapper $snappy */
+        $snappy = resolve('snappy.pdf.wrapper');
+        $options = config('datatables-buttons.snappy.options');
+        $orientation = config('datatables-buttons.snappy.orientation');
+
+        $snappy->setOptions($options)
+            ->setOrientation($orientation);
+
+        $data = $this->mapResponseToColumns($this->exportColumns, 'printable');
+
+        return $snappy->loadHTML(view($this->printPreview, compact('data')))
+            ->download($this->getFilename() . '.pdf');
+    }
 }
