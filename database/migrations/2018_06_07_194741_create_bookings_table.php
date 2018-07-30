@@ -26,7 +26,7 @@ class CreateBookingsTable extends Migration
             $table->enum('status', ['new', 'not-verified', 'confirmed', 'canceled', 'closed']);
             $table->timestamp('date');
             $table->decimal('price');
-            $table->text('comment')->default('');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }
